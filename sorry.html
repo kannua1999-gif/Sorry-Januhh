@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorry Baby ❤️</title>
+
+<style>
+@font-face{
+  font-family: 'Morolana';
+  src: url('assets/font.ttf'); /* OPTIONAL – agar font doge */
+}
+
+body{
+  margin:0;
+  background:#ffd6e8;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+  overflow:hidden;
+}
+
+/* FLOATING HEARTS */
+.heart-float{
+  position:absolute;
+  font-size:14px;
+  animation:float linear infinite;
+  opacity:.6;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh)}
+  to{transform:translateY(-10vh)}
+}
+
+/* SCREENS */
+.screen{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  transition:.6s ease;
+}
+.hidden{opacity:0;pointer-events:none}
+
+/* HEART BUTTON */
+.heart-btn{
+  width:120px;
+  height:120px;
+  background:#ff4d88;
+  clip-path:path("M60 110 C20 80 0 55 0 30 C0 10 15 0 30 0 C45 0 60 15 60 25 C60 15 75 0 90 0 C105 0 120 10 120 30 C120 55 100 80 60 110 Z");
+  animation:pulse 1.2s infinite;
+  box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.1)}
+}
+
+.instruction{
+  margin-top:15px;
+  color:#b30059;
+  font-weight:600;
+}
+
+/* CARD */
+.card{
+  background:white;
+  width:85%;
+  max-width:340px;
+  padding:20px;
+  border-radius:20px;
+  text-align:center;
+  animation:pop .5s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.7);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:20px;
+  background:#e60073;
+  color:white;
+  font-size:16px;
+}
+.no{background:#999}
+
+/* LETTER */
+.letter{
+  width:90%;
+  max-width:340px;
+  background:#fffaf0;
+  padding:22px;
+  border-radius:15px;
+  font-family:'Morolana',cursive;
+  animation:slide .6s ease;
+}
+
+@keyframes slide{
+  from{transform:translateY(40px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+
+img{
+  border-radius:15px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING HEARTS BACKGROUND -->
+<script>
+for(let i=0;i<25;i++){
+  let h=document.createElement("div");
+  h.className="heart-float";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=10+Math.random()*18+"px";
+  h.style.animationDuration=4+Math.random()*6+"s";
+  document.body.appendChild(h);
+}
+</script>
+
+<!-- SCREEN 1 -->
+<div class="screen" id="s1">
+  <div class="heart-btn" onclick="go2()"></div>
+  <div class="instruction">Touch the heart ❤️</div>
+</div>
+
+<!-- SCREEN 2 (SORRY) -->
+<div class="screen hidden" id="s2">
+  <div class="card">
+    <img src="https://img.sanishtech.com/u/8083b5bf41120c519b2cd8a2def115bf.gif" width="120"><br><br>
+    <b>Mujhe maaf krogi januhh? 🥺</b>
+    <button onclick="yes()">Yes ❤️</button>
+    <button class="no" onclick="no1()">No 😔</button>
+  </div>
+</div>
+
+<!-- NO 1 -->
+<div class="screen hidden" id="no1">
+  <div class="card">
+    <img src="https://img.sanishtech.com/u/6dc832c055f01f8f40aa828d0d5a1935.jpg" width="130"><br><br>
+    <button onclick="yes()">Yes ❤️</button>
+    <button class="no" onclick="no2()">No 😢</button>
+  </div>
+</div>
+
+<!-- NO 2 -->
+<div class="screen hidden" id="no2">
+  <div class="card">
+    <img src="https://img.sanishtech.com/u/c184abbeb15e94dede4ebf7ba29ebea7.gif" width="130"><br><br>
+    <button onclick="yes()">Yes ❤️</button>
+    <button class="no" onclick="last()">No 💔</button>
+  </div>
+</div>
+
+<!-- LAST -->
+<div class="screen hidden" id="last">
+  <div class="card">
+    <img src="https://img.sanishtech.com/u/5fba448b14050f29b490f2b9329d886d.gif" width="130"><br><br>
+    <b>Ab last time puch raha hu 🥺</b>
+    <button onclick="yes()">Yes ❤️</button>
+  </div>
+</div>
+
+<!-- LETTER -->
+<div class="screen hidden" id="letter">
+  <div class="letter">
+    <b>Dear januh 💕</b><br><br>
+
+    Mujhe pata tha meri baby mujhe maaf kar degi 🥹  
+    Baby I love juuuu ❤️❤️❤️  
+
+    <br><br>
+    Your Harshu
+  </div>
+</div>
+
+<script>
+function hideAll(){
+  document.querySelectorAll('.screen')
+    .forEach(s=>s.classList.add('hidden'));
+}
+function go2(){hideAll();s2.classList.remove('hidden')}
+function yes(){hideAll();letter.classList.remove('hidden')}
+function no1(){hideAll();document.getElementById('no1').classList.remove('hidden')}
+function no2(){hideAll();document.getElementById('no2').classList.remove('hidden')}
+function last(){hideAll();document.getElementById('last').classList.remove('hidden')}
+</script>
+
+</body>
+</html>
